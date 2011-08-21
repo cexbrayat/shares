@@ -28,10 +28,18 @@ app.configure('production', function(){
 
 // Routes
 
+// la liste des actions
+var shares = [{name:"Google",price:120}, {name:"Apple",price:132}, {name:"Microsoft",price:92}];
+
+// une route simple
 app.get('/', function(req, res){
-  res.render('index', {
-    title: 'Express'
-  });
+  res.render('shares', {title : 'Shares', shares : shares});
+});
+
+// une route avec parametre
+app.get('/:name', function(req, res){
+  res.render('shares', {title : req.params.name, 
+	shares : shares.filter(function(share){return share.name.toLowerCase() == req.params.name.toLowerCase()})});
 });
 
 app.listen(3000);
