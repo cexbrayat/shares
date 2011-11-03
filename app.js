@@ -42,5 +42,5 @@ app.get('/:name', function(req, res){
 	shares : shares.filter(function(share){return share.name.toLowerCase() == req.params.name.toLowerCase()})});
 });
 
-app.listen(3000);
+app.listen(process.env.C9_PORT);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
